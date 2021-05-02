@@ -3,11 +3,11 @@
 " URL:			https://github.com/TheSignPainter98/emblem
 " License:		GPL3
 
-autocmd BufNewFile,BufRead *.em set filetype=emblem
+autocmd BufNewFile,BufRead *.em setlocal filetype=emblem
 
 function! s:DetectEmblem()
 	if getline(1) =~ '^#!.*\<em\>'
-		set filetype=emblem
+		setlocal filetype=emblem
 	endif
 endfunction
 
