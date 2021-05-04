@@ -23,24 +23,7 @@ syn match emblemDirective /\.[a-zA-Z0-9$_@*]\+/
 hi def link emblemDirective Identifier
 
 syn match emblemBuiltinDirective /\.toc\s*$/
-syn match emblemBuiltinDirective /\.bib/
-syn match emblemBuiltinDirective /\.h1/
-syn match emblemBuiltinDirective /\.h2/
-syn match emblemBuiltinDirective /\.h3/
-syn match emblemBuiltinDirective /\.h4/
-syn match emblemBuiltinDirective /\.h5/
-syn match emblemBuiltinDirective /\.h6/
-syn match emblemBuiltinDirective /\.h1\*/
-syn match emblemBuiltinDirective /\.h2\*/
-syn match emblemBuiltinDirective /\.h3\*/
-syn match emblemBuiltinDirective /\.h4\*/
-syn match emblemBuiltinDirective /\.h5\*/
-syn match emblemBuiltinDirective /\.h6\*/
-syn match emblemBuiltinDirective /\.it/
-syn match emblemBuiltinDirective /\.bf/
-syn match emblemBuiltinDirective /\.tt/
-syn match emblemBuiltinDirective /\.sc/
-syn match emblemBuiltinDirective /\.af/
+syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Statement
 
