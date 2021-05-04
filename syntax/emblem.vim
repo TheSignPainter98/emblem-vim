@@ -38,7 +38,7 @@ syn region embleminvalidheader matchgroup=emblemInvalidHeaderDelimiter start="#\
 hi def link emblemInvalidHeader emblemHeader
 hi def link emblemInvalidHeaderDelimiter Error
 
-syn match emblemCommentLine /\%1l#!.*/
+syn match emblemCommentLine /\%1l^#!.*/
 syn match emblemCommentLine /\/\/.*/ contains=emblemTodo
 hi def link emblemCommentLine Comment
 
