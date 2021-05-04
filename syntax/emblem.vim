@@ -7,7 +7,7 @@ if exists('b:current_syntax') && b:current_syntax == 'emblem'
 	finish
 endif
 
-b:current_syntax = 'emblem'
+let b:current_syntax = 'emblem'
 
 if version < 600
 	syn clear
