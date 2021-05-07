@@ -19,7 +19,7 @@ syn sync minlines=100
 syn match emblemWord /[^ \t\n]\+/ contains=@spell
 hi def link emblemWord Word
 
-syn match emblemDirective /\.[a-zA-Z0-9$_@*]\+/
+syn match emblemDirective /\.[^ \t\r\n:{}]\+/
 hi def link emblemDirective Identifier
 
 syn match emblemBuiltinDirective /\.toc\s*$/
