@@ -16,7 +16,11 @@ endif
 " Highlight long strings
 syn sync minlines=100
 
-syn match emblemWord /[^ \t\n]\+/ contains=@spell
+syn match emblemWordEscape /\\[{}"']/
+hi def link emblemWordEscape SpecialChar
+syn match emblemInvalidWordEscape /\\[^{}"']/
+hi def link emblemInvalidWordEscape Error
+syn match emblemWord /[^ \\\t\n]\+/ contains=@spell,emblemWordEscape,emblemInvalidWordEscape
 hi def link emblemWord Word
 
 syn match emblemDirective /\.[^ \t\r\n:{}]\+/
