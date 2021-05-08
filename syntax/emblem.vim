@@ -16,7 +16,7 @@ endif
 " Highlight long strings
 syn sync minlines=100
 
-syn match emblemWordEscape /\\[{}"']/
+syn match emblemWordEscape /\\[{}"':]/
 hi def link emblemWordEscape SpecialChar
 syn match emblemInvalidWordEscape /\\[^{}"']/
 hi def link emblemInvalidWordEscape Error
