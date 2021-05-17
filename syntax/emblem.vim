@@ -55,7 +55,7 @@ hi def link emblemArgDelimiter PreProc
 syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
 hi def link emblemCommentRegion Comment
 
-syn match emblemLexerDirective /^,line/ nextgroup=emblemFileName skipwhite
+syn match emblemLexerDirective /^:line/ nextgroup=emblemFileName skipwhite
 syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite contained
 syn match emblemFileNameEscape /\\./ contained
 syn match emblemLineNumber /\v[0-9]+/ nextgroup=emblemColumnNumber skipwhite contained
