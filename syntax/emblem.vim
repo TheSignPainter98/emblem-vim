@@ -56,7 +56,7 @@ syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" f
 hi def link emblemCommentRegion Comment
 
 syn match emblemLexerDirective /^,line/ nextgroup=emblemFileNameString skipwhite
-syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite
+syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite contained
 syn match emblemFileNameEscape /\\./ contained
 syn match emblemLineNumber /\v[0-9]+/ nextgroup=emblemColumnNumber skipwhite contained
 syn match emblemColumnNumber /\v[0-9]+/ contained
