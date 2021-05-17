@@ -24,6 +24,10 @@ let s:maxoff = 200
 function! GetEmblemIndent(lnum)
 	let l:prevlnum = prevnonblank(a:lnum - 1)
 	let l:prevline = getline(l:prevlnum)
+	while l:prevline =~ '^:[^ \t]'
+		let l:prevlnum = l:prevlnum - 1
+		let l:prevline = getline(l:prevlnum)
+	endwhile
 	if l:prevlnum < 1
 		return 0
 	elseif l:prevline =~ ':$'
