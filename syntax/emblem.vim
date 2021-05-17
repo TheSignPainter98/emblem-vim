@@ -13,6 +13,24 @@ if version < 600
 	syn clear
 endif
 
+let s:concealends = ' '
+if has('conceal') && get(g:, 'emblem_syntax_conceal', 1) == 1
+	let s:concealends = ' concealends'
+endif
+
+hi def emblemStyleBold                term=bold cterm=bold gui=bold
+hi def emblemStyleBoldUnderline       term=bold,underline cterm=bold,underline gui=bold,underline
+hi def emblemStyleBoldItalic          term=bold,italic cterm=bold,italic gui=bold,italic
+hi def emblemStyleBoldUnderlineItalic term=bold,italic,underline cterm=bold,italic,underline gui=bold,italic,underline
+hi def emblemStyleUnderline           term=underline cterm=underline gui=underline
+hi def emblemStyleUnderlineItalic     term=italic,underline cterm=italic,underline gui=italic,underline
+hi def emblemStyleItalic              term=italic cterm=italic gui=italic
+if v:version > 800 || v:version == 800 && has("patch1038")
+	hi def emblemStyleStrike          term=strikethrough cterm=strikethrough gui=strikethrough
+else
+    hi def emblemStyleStrike          term=underline cterm=underline gui=underline
+endif
+
 " Highlight long strings
 syn sync minlines=100
 
@@ -25,6 +43,20 @@ hi def link emblemWord Word
 
 syn match emblemDirective /\.[^ \t\r\n:{}]\+/
 hi def link emblemDirective Identifier
+
+exe "syn region emblemItalicRegion matchgroup=conceal start='_' end='_' keepend oneline" . s:concealends
+" exe "syn region emblemItalicRegion matchgroup=conceal start='*' end='*' keepend oneline" . s:concealends
+hi def link emblemItalicRegion emblemStyleItalic
+
+exe "syn region emblemBoldRegion matchgroup=conceal start='__' end='__' keepend oneline" . s:concealends
+" exe "syn region emblemBoldRegion matchgroup=conceal start='**' end='**' keepend oneline" . s:concealends
+hi def link emblemBoldRegion emblemStyleBold
+
+exe "syn region emblemSmallCapRegion matchgroup=conceal start='=' end='=' keepend oneline" . s:concealends
+hi def link emblemSmallCapRegion emblemStyleUnderline
+
+exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend oneline" . s:concealends
+hi def link emblemMonoRegion emblemStyleUnderline
 
 syn match emblemBuiltinDirective /\.toc\s*$/
 syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af
