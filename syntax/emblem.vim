@@ -55,7 +55,18 @@ hi def link emblemArgDelimiter PreProc
 syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
 hi def link emblemCommentRegion Comment
 
-syn cluster emblemAll contains=emblemHeader,emblemDirective,emblemKnowndirective,emblemBuiltinDirective,emblemCommentLine,emblemCommentRegion,emblemWord
+syn match emblemLexerDirective /^,line/ nextgroup=emblemFileNameString skipwhite
+syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite
+syn match emblemFileNameEscape /\\./ contained
+syn match emblemLineNumber /\v[0-9]+/ nextgroup=emblemColumnNumber skipwhite contained
+syn match emblemColumnNumber /\v[0-9]+/ contained
+hi def link emblemLexerDirective PreProc
+hi def link emblemFileName String
+hi def link emblemFileNameEscape SpecialChar
+hi def link emblemLineNumber Number
+hi def link emblemColumnNumber Number
+
+syn cluster emblemAll contains=emblemHeader,emblemDirective,emblemKnownDirective,emblemBuiltinDirective,emblemCommentLine,emblemCommentRegion,emblemWord,emblemLexerDirective
 
 if !exists('b:current_syntax')
 	let b:current_syntax = 'emblem'
