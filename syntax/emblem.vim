@@ -42,7 +42,7 @@ syn match emblemWord /[^ \\\t\n]\+/ contains=@spell,emblemWordEscape,emblemInval
 hi def link emblemWord Word
 
 syn match emblemDirective /\.[^ \t\r\n:{}]\+/
-hi def link emblemDirective Identifier
+hi def link emblemDirective StorageClass
 
 exe "syn region emblemItalicRegion matchgroup=conceal start='_' end='_' keepend oneline" . s:concealends
 " exe "syn region emblemItalicRegion matchgroup=conceal start='*' end='*' keepend oneline" . s:concealends
@@ -61,7 +61,13 @@ hi def link emblemMonoRegion emblemStyleUnderline
 syn match emblemBuiltinDirective /\.toc\s*$/
 syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af
 hi def link emblemBuiltinDirective emblemKnownDirective
-hi def link emblemKnownDirective Statement
+hi def link emblemKnownDirective Constant
+
+syn keyword emblemBuiltinFunc .echo .streq
+hi def link emblemBuiltinFunc emblemBuiltinScriptDirective
+
+syn keyword emblemBuiltinScriptDirective .if .while .for
+hi def link emblemBuiltinScriptDirective Statement
 
 syn keyword emblemTodo TODO FIXME XXX contained
 hi def link emblemTodo Todo
@@ -98,7 +104,7 @@ hi def link emblemFileNameEscape SpecialChar
 hi def link emblemLineNumber Number
 hi def link emblemColumnNumber Number
 
-syn cluster emblemAll contains=emblemHeader,emblemDirective,emblemKnownDirective,emblemBuiltinDirective,emblemCommentLine,emblemCommentRegion,emblemWord,emblemLexerDirective
+syn cluster emblemAll contains=emblemHeader,emblemDirective,emblemKnownDirective,emblemBuiltinDirective,emblemBuiltinFunc,emblemBuiltinScriptDirective,emblemCommentLine,emblemCommentRegion,emblemWord,emblemLexerDirective
 
 if !exists('b:current_syntax')
 	let b:current_syntax = 'emblem'
