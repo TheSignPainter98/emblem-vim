@@ -45,7 +45,7 @@ syn match emblemDirective /\.[^ \t\r\n:{}]\+/
 hi def link emblemDirective StorageClass
 
 exe "syn region emblemItalicRegion matchgroup=conceal start='_' end='_' keepend oneline" . s:concealends
-" exe "syn region emblemItalicRegion matchgroup=conceal start='*' end='*' keepend oneline" . s:concealends
+exe "syn region emblemItalicRegion matchgroup=conceal start='*' end='*' keepend oneline" . s:concealends
 hi def link emblemItalicRegion emblemStyleItalic
 
 exe "syn region emblemBoldRegion matchgroup=conceal start='__' end='__' keepend oneline" . s:concealends
