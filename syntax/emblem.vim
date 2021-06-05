@@ -53,10 +53,10 @@ exe "syn region emblemBoldRegion matchgroup=conceal start='__' end='__' keepend 
 hi def link emblemBoldRegion emblemStyleBold
 
 exe "syn region emblemSmallCapRegion matchgroup=conceal start='=' end='=' keepend oneline" . s:concealends
-hi def link emblemSmallCapRegion emblemStyleUnderline
+hi def link emblemSmallCapRegion Underlined
 
 exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend oneline" . s:concealends
-hi def link emblemMonoRegion emblemStyleUnderline
+hi def link emblemMonoRegion Constant
 
 syn match emblemBuiltinDirective /\.toc\s*$/
 syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af
