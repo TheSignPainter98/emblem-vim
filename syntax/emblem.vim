@@ -63,10 +63,10 @@ syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
-syn keyword emblemBuiltinFunc .echo .streq
+syn keyword emblemBuiltinFunc .set-var .get-var .defined .exists .echo .streq
 hi def link emblemBuiltinFunc emblemBuiltinScriptDirective
 
-syn keyword emblemBuiltinScriptDirective .if .while .for
+syn keyword emblemBuiltinScriptDirective .if .while .foreach
 hi def link emblemBuiltinScriptDirective Statement
 
 syn keyword emblemTodo TODO FIXME XXX contained
