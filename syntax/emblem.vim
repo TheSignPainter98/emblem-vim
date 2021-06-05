@@ -63,7 +63,9 @@ syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
-syn keyword emblemBuiltinFunc .set-var .get-var .defined .exists .echo .streq
+syn match emblemBuiltinFunc /\.set-var/
+syn match emblemBuiltinFunc /\.get-var/
+syn keyword emblemBuiltinFunc .defined .exists .echo .streq
 hi def link emblemBuiltinFunc emblemBuiltinScriptDirective
 
 syn keyword emblemBuiltinScriptDirective .if .while .foreach
