@@ -88,7 +88,7 @@ syn match emblemColon /:/
 hi def link emblemColon emblemArgDelimiter
 syn region emblemGroup matchgroup=emblemCurlyBrace extend start='{' end='}' keepend fold transparent
 hi def link emblemCurlyBrace emblemArgDelimiter
-hi def link emblemArgDelimiter PreProc
+hi def link emblemArgDelimiter Structure
 
 syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
 hi def link emblemCommentRegion Comment
