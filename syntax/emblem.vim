@@ -36,10 +36,19 @@ syn sync minlines=100
 
 syn match emblemInvalidWordEscape /\\./
 hi def link emblemInvalidWordEscape Error
-syn match emblemWordEscape /\\[{}"':\\=*_`\-,.<>]/
+syn match emblemWordEscape /\\[<!{}"':\\=*_`\-,.<>]/
 hi def link emblemWordEscape SpecialChar
 syn match emblemWord /[^ \\\t\n]\+/ contains=@spell,emblemWordEscape,emblemInvalidWordEscape
 hi def link emblemWord Word
+
+syn match emblemCitation /\[[^ \t\r\n\]]\+\]/
+hi def link emblemCitation String
+
+syn match emblemLabel /@[^ \t\r\n[\]{}]\+/
+hi def link emblemLabel Identifier
+
+syn match emblemReference /#[^ \t\r\n[\]{}]\+/
+hi def link emblemReference PreProc
 
 syn match emblemDirective /\.[^ \t\r\n:{}]\+/
 hi def link emblemDirective StorageClass
@@ -58,17 +67,32 @@ hi def link emblemSmallCapRegion Underlined
 exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend oneline" . s:concealends
 hi def link emblemMonoRegion Constant
 
+syn match emblemVariableReference /![^ \t\r\n]\+/ contains=@spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
+syn match emblemVariableAssignment /<-/ contained
+hi def link emblemVariableReference Identifier
+hi def link emblemVariableAssignment Statement
+
 syn match emblemBuiltinDirective /\.toc\s*$/
-syn keyword emblemBuiltinDirective .bib .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af
+syn match emblemBuiltinDirective /\.flush-left/
+syn match emblemBuiltinDirective /\.flush-right/
+syn keyword emblemBuiltinDirective .bib .cite .label .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af .title .centre .center .justify .flush-left .flush-right
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
+syn keyword emblemBuiltinFunc .defined .exists .streq .defined
 syn match emblemBuiltinFunc /\.set-var/
 syn match emblemBuiltinFunc /\.get-var/
-syn keyword emblemBuiltinFunc .defined .exists .echo .streq
+syn match emblemBuiltinFunc /\.def/
+syn match emblemBuiltinFunc /\.undef/
+syn match emblemBuiltinFunc /\.echo/
+syn match emblemBuiltinFunc /\.echo-on/
+syn match emblemBuiltinFunc /\.error/
+syn match emblemBuiltinFunc /\.error-on/
+syn match emblemBuiltinFunc /\.warn/
+syn match emblemBuiltinFunc /\.warn-on/
 hi def link emblemBuiltinFunc emblemBuiltinScriptDirective
 
-syn keyword emblemBuiltinScriptDirective .if .while .foreach
+syn keyword emblemBuiltinScriptDirective .if .ifelse .case .while .foreach .include
 hi def link emblemBuiltinScriptDirective Statement
 
 syn keyword emblemTodo TODO FIXME XXX contained
@@ -95,8 +119,9 @@ hi def link emblemArgDelimiter Structure
 syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
 hi def link emblemCommentRegion Comment
 
-syn match emblemLexerDirective /^:line/ nextgroup=emblemFileName skipwhite
-syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite contained
+syn match emblemLexerDirective /^\s*:line/ nextgroup=emblemFileName skipwhite
+syn match emblemLexerDirective /^\s*:include/ nextgroup=emblemFileName skipwhite
+syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite contained " Yeah, this isn't great
 syn match emblemFileNameEscape /\\./ contained
 syn match emblemLineNumber /\v[0-9]+/ nextgroup=emblemColumnNumber skipwhite contained
 syn match emblemColumnNumber /\v[0-9]+/ contained
