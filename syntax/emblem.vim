@@ -44,8 +44,8 @@ hi def link emblemWord Word
 syn match emblemCitation /\[[^ \t\r\n\]]\+\]/
 hi def link emblemCitation String
 
-syn match emblemLabel /@[^ \t\r\n[\]{}]\+/
-hi def link emblemLabel Identifier
+syn match emblemAnchor /@[^ \t\r\n[\]{}]\+/
+hi def link emblemAnchor Identifier
 
 syn match emblemReference /#[^ \t\r\n[\]{}]\+/
 hi def link emblemReference PreProc
@@ -75,7 +75,7 @@ hi def link emblemVariableAssignment Statement
 syn match emblemBuiltinDirective /\.toc\s*$/
 syn match emblemBuiltinDirective /\.flush-left/
 syn match emblemBuiltinDirective /\.flush-right/
-syn keyword emblemBuiltinDirective .bib .cite .label .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af .title .centre .center .justify .flush-left .flush-right
+syn keyword emblemBuiltinDirective .bib .cite .anchor .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af .title .centre .center .justify .flush-left .flush-right
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
