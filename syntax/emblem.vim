@@ -119,6 +119,11 @@ hi def link emblemArgDelimiter Structure
 syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
 hi def link emblemCommentRegion Comment
 
+syn match emblemListEnum /\v^\s*[-*](\s|$)/
+hi def link emblemListEnum Constant
+syn match emblemListEnum /\v^\s*[0-9]+\.(\s|$)/
+hi def link emblemListEnum Constant
+
 syn match emblemLexerDirective /^\s*:line/ nextgroup=emblemFileName skipwhite
 syn match emblemLexerDirective /^\s*:include/ nextgroup=emblemFileName skipwhite
 syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite contained " Yeah, this isn't great
