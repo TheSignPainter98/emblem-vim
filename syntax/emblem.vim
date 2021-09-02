@@ -73,26 +73,37 @@ hi def link emblemVariableReference Identifier
 hi def link emblemVariableAssignment Statement
 
 syn match emblemBuiltinDirective /\.toc\s*$/
-syn match emblemBuiltinDirective /\.flush-left/
-syn match emblemBuiltinDirective /\.flush-right/
-syn keyword emblemBuiltinDirective .bib .cite .anchor .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af .title .centre .center .justify .flush-left .flush-right
+syn match emblemBuiltinDirective /\.flush[_-]left/
+syn match emblemBuiltinDirective /\.flush[_-]right/
+syn keyword emblemBuiltinDirective .bib .cite .anchor .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af .title .centre .center .justify
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
-syn keyword emblemBuiltinFunc .defined .exists .streq .defined
-syn match emblemBuiltinFunc /\.set-var/
-syn match emblemBuiltinFunc /\.get-var/
+syn keyword emblemBuiltinFunc .call .defined .exists .help
+syn match emblemBuiltinFunc /\.set[_-]var/
+syn match emblemBuiltinFunc /\.get[_-]var/
 syn match emblemBuiltinFunc /\.def/
 syn match emblemBuiltinFunc /\.undef/
 syn match emblemBuiltinFunc /\.echo/
-syn match emblemBuiltinFunc /\.echo-on/
+syn match emblemBuiltinFunc /\.echo[_-]on/
 syn match emblemBuiltinFunc /\.error/
-syn match emblemBuiltinFunc /\.error-on/
+syn match emblemBuiltinFunc /\.error[_-]on/
 syn match emblemBuiltinFunc /\.warn/
-syn match emblemBuiltinFunc /\.warn-on/
+syn match emblemBuiltinFunc /\.warn[_-]on/
+syn match emblemBuiltinFunc /\.curr[_-]version/
+syn match emblemBuiltinFunc /\.known[_-]directives/
 hi def link emblemBuiltinFunc emblemBuiltinScriptDirective
 
-syn keyword emblemBuiltinScriptDirective .if .ifelse .case .while .foreach .include
+syn keyword emblemMathsFunc .add .div .idiv .mod .mul .pow .sign .sub
+hi def link emblemMathsFunc String
+syn keyword emblemBooleanFunc .and .impl .not .or .xor
+hi def link emblemBooleanFunc Type
+syn keyword emblemInequalityFunc .ge .gt .le .lt .eq
+hi def link emblemEqualityFunc emblemInequalityFunc
+syn keyword emblemInequalityFunc .eq .numeq .streq
+hi def link emblemInequalityFunc Identifier
+
+syn keyword emblemBuiltinScriptDirective .if .ifelse .case .while .foreach .include .include*
 hi def link emblemBuiltinScriptDirective Statement
 
 syn keyword emblemTodo TODO FIXME XXX contained
