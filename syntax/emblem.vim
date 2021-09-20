@@ -79,22 +79,11 @@ syn keyword emblemBuiltinDirective .bib .cite .anchor .ref .h1 .h2 .h3 .h4 .h5 .
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
-syn keyword emblemBuiltinFunc .call .defined .exists .help
-syn match emblemBuiltinFunc /\.set[_-]var/
-syn match emblemBuiltinFunc /\.get[_-]var/
-syn match emblemBuiltinFunc /\.def/
-syn match emblemBuiltinFunc /\.undef/
-syn match emblemBuiltinFunc /\.echo/
-syn match emblemBuiltinFunc /\.echo[_-]on/
-syn match emblemBuiltinFunc /\.error/
-syn match emblemBuiltinFunc /\.error[_-]on/
-syn match emblemBuiltinFunc /\.warn/
-syn match emblemBuiltinFunc /\.warn[_-]on/
 syn match emblemBuiltinFunc /\.curr[_-]version/
 syn match emblemBuiltinFunc /\.known[_-]directives/
-hi def link emblemBuiltinFunc emblemBuiltinScriptDirective
+hi def link emblemBuiltinFunc Identifier
 
-syn keyword emblemMathsFunc .add .div .idiv .mod .mul .pow .sign .sub
+syn keyword emblemMathsFunc .add .div .idiv .mod .mul .pow .sign .sub .defined .exists
 hi def link emblemMathsFunc String
 syn keyword emblemBooleanFunc .and .impl .not .or .xor
 hi def link emblemBooleanFunc Type
@@ -103,7 +92,17 @@ hi def link emblemEqualityFunc emblemInequalityFunc
 syn keyword emblemInequalityFunc .eq .numeq .streq
 hi def link emblemInequalityFunc Identifier
 
-syn keyword emblemBuiltinScriptDirective .if .ifelse .case .while .foreach .include .include*
+syn keyword emblemBuiltinScriptDirective .if .ifelse .case .while .foreach .include .include* .call .help
+syn match emblemBuiltinScriptDirective /\.set[_-]var/
+syn match emblemBuiltinScriptDirective /\.get[_-]var/
+syn match emblemBuiltinScriptDirective /\.def/
+syn match emblemBuiltinScriptDirective /\.undef/
+syn match emblemBuiltinScriptDirective /\.echo/
+syn match emblemBuiltinScriptDirective /\.echo[_-]on/
+syn match emblemBuiltinScriptDirective /\.error/
+syn match emblemBuiltinScriptDirective /\.error[_-]on/
+syn match emblemBuiltinScriptDirective /\.warn/
+syn match emblemBuiltinScriptDirective /\.warn[_-]on/
 hi def link emblemBuiltinScriptDirective Statement
 
 syn keyword emblemTodo TODO FIXME XXX contained
@@ -113,7 +112,7 @@ syn region emblemHeader matchgroup=emblemHeaderDelimiter start="^\s*#\{1,6\}\*\=
 hi def link emblemHeaderDelimiter Type
 hi def link emblemHeader Type
 
-syn region embleminvalidheader matchgroup=emblemInvalidHeaderDelimiter start="#\{7,\}\*\=" end="#*\s*$" keepend oneline
+syn region emblemInvalidheader matchgroup=emblemInvalidHeaderDelimiter start="#\{7,\}\*\=" end="#*\s*$" keepend oneline
 hi def link emblemInvalidHeader emblemHeader
 hi def link emblemInvalidHeaderDelimiter Error
 
@@ -147,7 +146,7 @@ hi def link emblemFileNameEscape SpecialChar
 hi def link emblemLineNumber Number
 hi def link emblemColumnNumber Number
 
-syn cluster emblemAll contains=emblemHeader,emblemDirective,emblemKnownDirective,emblemBuiltinDirective,emblemBuiltinFunc,emblemBuiltinScriptDirective,emblemCommentLine,emblemCommentRegion,emblemWord,emblemLexerDirective
+syn cluster emblemAll contains=emblemAnchor,emblemArgDelimiter,emblemBoldRegion,emblemBooleanFunc,emblemBuiltinDirective,emblemBuiltinFunc,emblemBuiltinScriptDirective,emblemCitation,emblemColon,emblemColumnNumber,emblemCommentLine,emblemCommentRegion,emblemCurlyBrace,emblemDirective,emblemEqualityFunc,emblemFileName,emblemFileNameEscape,emblemGroup,emblemHeader,emblemHeaderDelimiter,emblemInequalityFunc,emblemInvalidHeader,emblemInvalidHeaderDelimiter,emblemInvalidWordEscape,emblemItalicRegion,emblemKnownDirective,emblemLexerDirective,emblemLineNumber,emblemListEnum,emblemMathsFunc,emblemMonoRegion,emblemReference,emblemSmallCapRegion,emblemStyleBold,emblemStyleBoldItalic,emblemStyleBoldUnderline,emblemStyleBoldUnderlineItalic,emblemStyleItalic,emblemStyleStrike,emblemStyleUnderline,emblemStyleUnderlineItalic,emblemTodo,emblemVariableAssignment,emblemVariableReference,emblemWord,emblemWordEscape
 
 if !exists('b:current_syntax')
 	let b:current_syntax = 'emblem'
