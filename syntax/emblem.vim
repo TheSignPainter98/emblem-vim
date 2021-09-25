@@ -92,7 +92,7 @@ hi def link emblemEqualityFunc emblemInequalityFunc
 syn keyword emblemInequalityFunc .eq .numeq .streq
 hi def link emblemInequalityFunc Identifier
 
-syn keyword emblemBuiltinScriptDirective .if .ifelse .case .while .foreach .include .include* .call .help
+syn keyword emblemBuiltinScriptDirective .if .case .while .foreach .include .include* .call .help .expr
 syn match emblemBuiltinScriptDirective /\.set[_-]var/
 syn match emblemBuiltinScriptDirective /\.get[_-]var/
 syn match emblemBuiltinScriptDirective /\.def/
