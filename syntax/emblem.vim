@@ -68,7 +68,8 @@ exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend on
 hi def link emblemMonoRegion Constant
 
 syn match emblemVariableReference /![^ \t\r\n]\+/ contains=@spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
-syn match emblemVariableAssignment /<-/ contained
+syn match emblemVariableAssignment /<--\=\s/ contained
+syn match emblemVariableAssignment /<\~\~\=\s/ contained
 hi def link emblemVariableReference Identifier
 hi def link emblemVariableAssignment Statement
 
