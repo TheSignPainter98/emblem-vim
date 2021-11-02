@@ -28,7 +28,7 @@ hi def emblemStyleItalic              term=italic cterm=italic gui=italic
 if v:version > 800 || v:version == 800 && has("patch1038")
 	hi def emblemStyleStrike          term=strikethrough cterm=strikethrough gui=strikethrough
 else
-    hi def emblemStyleStrike          term=underline cterm=underline gui=underline
+	hi def emblemStyleStrike          term=underline cterm=underline gui=underline
 endif
 
 " Highlight long strings
