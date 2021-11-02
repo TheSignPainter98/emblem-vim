@@ -9,8 +9,9 @@ let s:keepcpo=&cpo
 set cpo&vim
 
 setlocal formatoptions-=t
-setlocal comments=n://,nsl:/*,nm:*,ner:*/
-setlocal commentstring=/*%s*/
+setlocal formatoptions+=onj
+setlocal comments=bOn://,nsr:/*,nmbr:*,nexl:*/
+setlocal commentstring=//%s
 setlocal iskeyword+=.,*
 
 setlocal tabstop=4
