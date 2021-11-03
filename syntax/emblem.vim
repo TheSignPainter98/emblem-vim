@@ -119,6 +119,7 @@ syn match emblemCommentLine /\/\/.*/ contains=emblemTodo
 hi def link emblemCommentLine Comment
 
 syn match emblemColon /:\>/
+syn match emblemColon /^\s*::\>/
 hi def link emblemColon emblemArgDelimiter
 syn region emblemGroup matchgroup=emblemCurlyBrace extend start='{' end='}' keepend fold transparent
 hi def link emblemCurlyBrace emblemArgDelimiter
