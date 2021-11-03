@@ -68,20 +68,20 @@ exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend on
 hi def link emblemMonoRegion Constant
 
 syn match emblemVariableReference /![^ \t\r\n]\+/ contains=@spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
-syn match emblemVariableAssignment /<--\=\s/ contained
-syn match emblemVariableAssignment /<\~\~\=\s/ contained
+syn match emblemVariableAssignment /<--\=\>/ contained
+syn match emblemVariableAssignment /<\~\~\=\>/ contained
 hi def link emblemVariableReference Identifier
 hi def link emblemVariableAssignment Statement
 
 syn match emblemBuiltinDirective /\.toc\s*$/
-syn match emblemBuiltinDirective /\.flush[_-]left/
-syn match emblemBuiltinDirective /\.flush[_-]right/
-syn keyword emblemBuiltinDirective .bib .cite .anchor .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .af .title .centre .center .justify
+syn match emblemBuiltinDirective /\.flush[_-]left\>/
+syn match emblemBuiltinDirective /\.flush[_-]right\>/
+syn keyword emblemBuiltinDirective .bib .cite .anchor .ref .h1 .h2 .h3 .h4 .h5 .h6 .h1* .h2* .h3* .h4* .h5* .h6* .it .bf .tt .sc .df .af .title .centre .center .justify
 hi def link emblemBuiltinDirective emblemKnownDirective
 hi def link emblemKnownDirective Constant
 
-syn match emblemBuiltinFunc /\.curr[_-]version/
-syn match emblemBuiltinFunc /\.known[_-]directives/
+syn match emblemBuiltinFunc /\.curr[_-]version\>/
+syn match emblemBuiltinFunc /\.known[_-]directives\>/
 hi def link emblemBuiltinFunc Identifier
 
 syn keyword emblemMathsFunc .add .div .idiv .mod .mul .pow .sign .sub .defined .exists
@@ -94,16 +94,13 @@ syn keyword emblemInequalityFunc .eq .numeq .streq
 hi def link emblemInequalityFunc Identifier
 
 syn keyword emblemBuiltinScriptDirective .if .case .while .for .foreach .include .include* .call .help .expr
-syn match emblemBuiltinScriptDirective /\.\(find[_-]\)\=set[_-]var\([_-]expr\)\=/
-syn match emblemBuiltinScriptDirective /\.get[_-]var/
-syn match emblemBuiltinScriptDirective /\.def/
-syn match emblemBuiltinScriptDirective /\.undef/
-syn match emblemBuiltinScriptDirective /\.echo/
-syn match emblemBuiltinScriptDirective /\.echo[_-]on/
-syn match emblemBuiltinScriptDirective /\.error/
-syn match emblemBuiltinScriptDirective /\.error[_-]on/
-syn match emblemBuiltinScriptDirective /\.warn/
-syn match emblemBuiltinScriptDirective /\.warn[_-]on/
+syn match emblemBuiltinScriptDirective /\.\(find[_-]\)\=set[_-]var\([_-]expr\)\=\>/
+syn match emblemBuiltinScriptDirective /\.get[_-]var\>/
+syn match emblemBuiltinScriptDirective /\.def\>/
+syn match emblemBuiltinScriptDirective /\.undef\>/
+syn match emblemBuiltinScriptDirective /\.echo\([_-]on\)\=\>/
+syn match emblemBuiltinScriptDirective /\.error\([_-]on\)\=\>/
+syn match emblemBuiltinScriptDirective /\.warn\([_-]on\)\=\>/
 hi def link emblemBuiltinScriptDirective Statement
 
 syn keyword emblemTodo TODO FIXME XXX contained
@@ -121,7 +118,7 @@ syn match emblemCommentLine /\%1l^#!.*/
 syn match emblemCommentLine /\/\/.*/ contains=emblemTodo
 hi def link emblemCommentLine Comment
 
-syn match emblemColon /:/
+syn match emblemColon /:\>/
 hi def link emblemColon emblemArgDelimiter
 syn region emblemGroup matchgroup=emblemCurlyBrace extend start='{' end='}' keepend fold transparent
 hi def link emblemCurlyBrace emblemArgDelimiter
@@ -135,8 +132,8 @@ hi def link emblemListEnum Constant
 syn match emblemListEnum /\v^\s*[0-9]+\.(\s|$)/
 hi def link emblemListEnum Constant
 
-syn match emblemLexerDirective /^\s*:line/ nextgroup=emblemFileName skipwhite
-syn match emblemLexerDirective /^\s*:include/ nextgroup=emblemFileName skipwhite
+syn match emblemLexerDirective /^\s*:line\>/ nextgroup=emblemFileName skipwhite
+syn match emblemLexerDirective /^\s*:include\>/ nextgroup=emblemFileName skipwhite
 syn match emblemFileName /\v"(\\.|[^"])*"/ contains=emblemFileNameEscape nextgroup=emblemLineNumber skipwhite contained " Yeah, this isn't great
 syn match emblemFileNameEscape /\\./ contained
 syn match emblemLineNumber /\v[0-9]+/ nextgroup=emblemColumnNumber skipwhite contained
