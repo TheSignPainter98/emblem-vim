@@ -57,6 +57,8 @@ noremap <script> <silent> [[ :call <sid>EmblemNextSection(1, 1)<cr>
 noremap <script> <silent> ][ :call <sid>EmblemNextSection(2, 0)<cr>
 noremap <script> <silent> [] :call <sid>EmblemNextSection(2, 1)<cr>
 
+compiler em
+
 let b:undo_ftplugin = "setlocal commentstring< comments< formatoptions< completefunc< shiftwidth< softtabstop< tabstop< iskeyword< foldignore< foldmethod<"
 
 let &cpo=s:keepcpo
