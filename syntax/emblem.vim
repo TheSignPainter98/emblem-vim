@@ -38,7 +38,7 @@ syn match emblemInvalidWordEscape /\\./
 hi def link emblemInvalidWordEscape Error
 syn match emblemWordEscape /\\[<!{}"':\\=*_`\-,.<>]/
 hi def link emblemWordEscape SpecialChar
-syn match emblemWord /[^ \\\t\n]\+/ contains=@spell,emblemWordEscape,emblemInvalidWordEscape
+syn match emblemWord /[^ \\\t\n~]\+/ contains=@spell,emblemWordEscape,emblemInvalidWordEscape
 hi def link emblemWord Word
 
 syn match emblemCitation /\[[^ \t\r\n\]]\+\]/
@@ -67,7 +67,7 @@ hi def link emblemSmallCapRegion Underlined
 exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend oneline" . s:concealends
 hi def link emblemMonoRegion Constant
 
-syn match emblemVariableReference /![^ \t\r\n]\+/ contains=@spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
+syn match emblemVariableReference /![^ \t\r\n~]\+/ contains=@spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
 syn match emblemVariableAssignment /<--\=\>/ contained
 syn match emblemVariableAssignment /<\~\~\=\>/ contained
 hi def link emblemVariableReference Identifier
@@ -124,6 +124,9 @@ hi def link emblemColon emblemArgDelimiter
 syn region emblemGroup matchgroup=emblemCurlyBrace extend start='{' end='}' keepend fold transparent
 hi def link emblemCurlyBrace emblemArgDelimiter
 hi def link emblemArgDelimiter Structure
+
+syn match emblemGlue /\~/
+hi def link emblemGlue Structure
 
 syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
 hi def link emblemCommentRegion Comment
