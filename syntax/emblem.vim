@@ -38,7 +38,7 @@ syn match emblemInvalidWordEscape /\\./
 hi def link emblemInvalidWordEscape Error
 syn match emblemWordEscape /\\[<!{}"':\\=*_`\-,.<>[]/
 hi def link emblemWordEscape SpecialChar
-syn match emblemWord /[^ \\\t\n~]\+/ contains=@spell,emblemWordEscape,emblemInvalidWordEscape
+syn match emblemWord /[^ \\\t\n~]\+/ contains=emblemWordEscape,emblemInvalidWordEscape,@Spell
 hi def link emblemWord Word
 
 syn match emblemCitation /\[[^ \t\r\n\]]\+\]/
@@ -53,21 +53,21 @@ hi def link emblemReference PreProc
 syn match emblemDirective /\.[^ \t\r\n:{}]\+/
 hi def link emblemDirective StorageClass
 
-exe "syn region emblemItalicRegion matchgroup=conceal start='_' end='_' keepend oneline" . s:concealends
-exe "syn region emblemItalicRegion matchgroup=conceal start='*' end='*' keepend oneline" . s:concealends
+exe "syn region emblemItalicRegion matchgroup=conceal start='_' end='_' keepend oneline contains=@Spell" . s:concealends
+exe "syn region emblemItalicRegion matchgroup=conceal start='*' end='*' keepend oneline contains=@Spell" . s:concealends
 hi def link emblemItalicRegion emblemStyleItalic
 
-exe "syn region emblemBoldRegion matchgroup=conceal start='__' end='__' keepend oneline" . s:concealends
-" exe "syn region emblemBoldRegion matchgroup=conceal start='**' end='**' keepend oneline" . s:concealends
+exe "syn region emblemBoldRegion matchgroup=conceal start='__' end='__' keepend oneline contains=@Spell" . s:concealends
+" exe "syn region emblemBoldRegion matchgroup=conceal start='**' end='**' keepend oneline contains=@Spell" . s:concealends
 hi def link emblemBoldRegion emblemStyleBold
 
 exe "syn region emblemSmallCapRegion matchgroup=conceal start='=' end='=' keepend oneline" . s:concealends
-hi def link emblemSmallCapRegion Underlined
+hi def link emblemSmallCapRegion String
 
 exe "syn region emblemMonoRegion matchgroup=conceal start='`' end='`' keepend oneline" . s:concealends
 hi def link emblemMonoRegion Constant
 
-syn match emblemVariableReference /![^ \t\r\n~]\+/ contains=@spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
+syn match emblemVariableReference /![^ \t\r\n~]\+/ contains=@Spell nextgroup=emblemVariableAssignment,emblemAll skipwhite
 syn match emblemVariableAssignment /<--\=\>/ contained
 syn match emblemVariableAssignment /<\~\~\=\>/ contained
 hi def link emblemVariableReference Identifier
@@ -106,11 +106,11 @@ hi def link emblemBuiltinScriptDirective Statement
 syn keyword emblemTodo TODO FIXME XXX contained
 hi def link emblemTodo Todo
 
-syn region emblemHeader matchgroup=emblemHeaderDelimiter start="^\s*#\{1,6\}\*\=\s" end="#*\s*$" keepend oneline
+syn region emblemHeader matchgroup=emblemHeaderDelimiter start="^\s*#\{1,6\}\*\=\s" end="#*\s*$" keepend oneline contains=@Spell
 hi def link emblemHeaderDelimiter Type
 hi def link emblemHeader Type
 
-syn region emblemInvalidheader matchgroup=emblemInvalidHeaderDelimiter start="#\{7,\}\*\=" end="#*\s*$" keepend oneline
+syn region emblemInvalidheader matchgroup=emblemInvalidHeaderDelimiter start="#\{7,\}\*\=" end="#*\s*$" keepend oneline contains=@Spell
 hi def link emblemInvalidHeader emblemHeader
 hi def link emblemInvalidHeaderDelimiter Error
 
@@ -128,7 +128,7 @@ hi def link emblemArgDelimiter Structure
 syn match emblemGlue /\~/
 hi def link emblemGlue Structure
 
-syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo
+syn region emblemCommentRegion matchgroup=Comment extend start="/\*" end="\*/" fold contains=emblemCommentRegion,emblemTodo,@Spell
 hi def link emblemCommentRegion Comment
 
 syn match emblemListEnum /\v^\s*[-*](\s|$)/
