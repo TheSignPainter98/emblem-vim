@@ -44,10 +44,10 @@ hi def link emblemWord Word
 syn match emblemCitation /\[[^ \t\r\n\]]\+\]/
 hi def link emblemCitation String
 
-syn match emblemAnchor /@[^ \t\r\n[\]{}]\+/
+syn match emblemAnchor /@[^ \t\r\n{}()[\]~]\+/
 hi def link emblemAnchor Identifier
 
-syn match emblemReference /#[^ \t\r\n[\]{}]\+/
+syn match emblemReference /#[^ \t\r\n{}()[\]~]\+/
 hi def link emblemReference PreProc
 
 syn match emblemDirective /\.[^ \t\r\n:{}]\+/
