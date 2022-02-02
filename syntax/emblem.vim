@@ -36,7 +36,7 @@ syn sync minlines=100
 
 syn match emblemInvalidWordEscape /\\./
 hi def link emblemInvalidWordEscape Error
-syn match emblemWordEscape /\\[<!{}"':\\=*_`\-,.<>[]/
+syn match emblemWordEscape /\\[<!{}"':\\=*_`\-,.<>[#@]/
 hi def link emblemWordEscape SpecialChar
 syn match emblemWord /[^ \\\t\n~]\+/ contains=emblemWordEscape,emblemInvalidWordEscape,@Spell
 hi def link emblemWord Word
