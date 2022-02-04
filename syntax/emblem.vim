@@ -50,7 +50,7 @@ hi def link emblemAnchor Identifier
 syn match emblemReference /#[^ \t\r\n{}()[\]~]\+/
 hi def link emblemReference PreProc
 
-syn match emblemDirective /\.[^ \t\r\n:{}]\+/
+syn match emblemDirective /\.[^ \t\r\n:{}[]\+/
 hi def link emblemDirective StorageClass
 
 exe "syn region emblemItalicRegion matchgroup=conceal start='_' end='_' keepend oneline contains=@Spell" . s:concealends
